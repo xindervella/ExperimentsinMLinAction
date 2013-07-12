@@ -2,10 +2,7 @@
 
 This is a Experiments from Peter Harrington book "[ML in Action](http://www.amazon.com/Machine-Learning-Action-Peter-Harrington/dp/1617290181/ref=sr_1_1?ie=UTF8&qid=1373630348&sr=8-1&keywords=machine+learning+in+action)"
 
-====
-
 #kNN: k Nearest Neighbours
-
 
 Input:
 
