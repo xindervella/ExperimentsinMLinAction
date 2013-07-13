@@ -29,7 +29,9 @@ def classify0(inX, dataSet, labels, k):
         # print "voteIlable:", voteIlable
         classCount[voteIlable] = classCount.get(voteIlable, 0) + 1
         # print "classCount:", classCount
-    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(1), reverse=True)
+    sortedClassCount = sorted(classCount.iteritems(),
+                              key=operator.itemgetter(1),
+                              reverse=True)
     # print "sortedClassCount:", sortedClassCount
     return sortedClassCount[0][0]
 
@@ -59,7 +61,7 @@ def file2matrix(filename):
 # print datingLabels
 # fig = plt.figure()
 # ax = fig.add_subplot(111)
-# ax.scatter(datingDateMat[:, 0], datingDateMat[:, 1], 15.0*array(datingLabels), 15.0*array(datingLabels))
+# ax.scatter(datingDateMat[:, 0], datingDateMat[:, 1], 15.0*array(datingLabels), array(datingLabels)-1)
 # plt.show()
 
 
@@ -83,7 +85,9 @@ def datingClassTest():
     numTestVecs = int(m * hoRatio)
     errorCount = 0.0
     for i in xrange(numTestVecs):
-        classifierResult = classify0(normMat[i, :], normMat[numTestVecs:m, :], datingLabels[numTestVecs:m], 3)
+        classifierResult = classify0(normMat[i, :],
+                                     normMat[numTestVecs:m, :],
+                                     datingLabels[numTestVecs:m], 3)
         print "the classifier come back with: %d, the real answer is: %d" % (classifierResult, datingLabels[i])
         if classifierResult != datingLabels[i]:
             errorCount += 1.0
@@ -138,12 +142,14 @@ def handwritingClassTest():
         fileStr = fileNameStr.split('.')[0]
         classNumStr = int(fileStr.split('_')[0])
         vectorUnderTest = img2vector('testDigits/%s' % fileNameStr)
-        classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
+        classifierResult = classify0(vectorUnderTest,
+                                     trainingMat,
+                                     hwLabels, 3)
         print "the classifier came back whit: %d, the real answer is: %d" % (classifierResult, classNumStr)
         if classifierResult != classNumStr:
             errorCount += 1.0
             print 'X'
     print "\nthe total number of errors is: %d" % errorCount
-    print "\nthe total error rate is: %f" % ( errorCount/float(mTest) )
+    print "\nthe total error rate is: %f" % (errorCount/float(mTest))
 
-handwritingClassTest()
+# handwritingClassTest()
