@@ -27,7 +27,7 @@ def calcShannonEnt(dataSet):
     return shannonEnt
 
 # test:
-myData, labels = createDataSet()
+# myData, labels = createDataSet()
 # print calcShannonEnt(myData)
 
 
@@ -82,35 +82,22 @@ def majorityCnt(classList):
 
 
 def createTree(dataSet, labels):
-    print dataSet
-    print labels
     classList = [example[-1] for example in dataSet]
-    print "classList: ", classList
-    print "classList.count(classList[0]): ", classList.count(classList[0])
-    print "classList[0]: ", classList[0]
     if classList.count(classList[0]) == len(classList):
         return classList[0]
-    print "dataSet: ", dataSet
     if len(dataSet[0]) == 1:
-        print "majorityCnt(classList): ", majorityCnt(classList)
         return majorityCnt(classList)
     bestFeat = chooseBestFeatureToSplit(dataSet)
     bestFeatLabel = labels[bestFeat]
-    print "bestFeat: ", bestFeat
-    print "bestFeatLabel: ", bestFeatLabel
     myTree = {bestFeatLabel: {}}
-    print "myTree: ", myTree
     del(labels[bestFeat])
-    print "labels: ", labels
     featValues = [example[bestFeat] for example in dataSet]
-    print "featValues: ", featValues
     uniqueVals = set(featValues)
     for value in uniqueVals:
         subLabels = labels[:]
-        print "subLabels", subLabels
         myTree[bestFeatLabel][value] = createTree(
             splitDataSet(dataSet, bestFeat, value),
             subLabels)
     return myTree
 
-
+# myTree = createTree(myData, labels)
