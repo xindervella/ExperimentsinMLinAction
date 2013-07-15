@@ -17,3 +17,6 @@ Input:
 Output:
 
 * the most popular class label
+
+#Decision Tree
+
