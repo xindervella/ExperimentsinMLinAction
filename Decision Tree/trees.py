@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from math import log
 import operator
 
@@ -101,3 +102,29 @@ def createTree(dataSet, labels):
     return myTree
 
 # myTree = createTree(myData, labels)
+
+
+#测试算法：
+
+def classify(inputTree, featLabels, testVec):
+    firstStr = inputTree.keys()[0]
+    secondDict = inputTree[firstStr]
+    featIndex = featLabels.index(firstStr)
+    for key in secondDict.keys():
+        if testVec[featIndex] == key:
+            if type(secondDict[key]) is dict:
+                classLabel = classify(secondDict[key], featLabels, testVec)
+            else:
+                classLabel = secondDict[key]
+    return classLabel
+    
+def storeTree(inputTree, filename):
+    import pickle
+    fw = open(filename, 'w')
+    pickle.dump(inputTree, fw)
+    fw.close()
+    
+def grabTree(filename):
+    import pickle
+    fr = open(filename)
+    return pickle.load(fr)

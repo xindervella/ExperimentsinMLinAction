@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import matplotlib.pyplot as plt
 
 
@@ -87,3 +88,4 @@ def createPlot(inTree):
     plotTree.yOff = 1.0
     plotTree(inTree, (0.5, 1.0), '')
     plt.show()
+

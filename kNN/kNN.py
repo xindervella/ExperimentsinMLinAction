@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from numpy import *
 from os import listdir
 import operator
